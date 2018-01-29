@@ -3,15 +3,23 @@ import React, {Component} from 'react';
 // Import the module ReactDOM to Render Components to the DOM
 import ReactDOM from 'react-dom';
 
-// Our React Component - App
-class App extends Component{
-	render(){
-		return(
-		<div className="container">
-			Starting App
-		</div>
-		);
-	}
-};
+// Import Provider Prop from React-Redux
+import { Provider } from 'react-redux';
+// Store and Middleware needed
+import { createStore, applyMiddleware } from 'redux';
 
-ReactDOM.render(<App />, document.querySelector('.app'));
+// Import the App Component
+import App from './components/app';
+// Import the Reducers
+import reducers from './reducers';
+
+
+// Create Store with the Middleware
+const createStoreWithMiddleware = applyMiddleware()(createStore);
+
+// Render the Provider with the Store prop
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <App />
+  </Provider>
+  , document.querySelector('.app'));
