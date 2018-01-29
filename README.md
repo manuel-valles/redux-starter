@@ -1,3 +1,3 @@
-# Book List | React-Redux App
+# Redux Starter Package | Template
 
-First App with Redux
+A kick-starter for Redux-React Apps
